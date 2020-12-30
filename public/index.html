@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <form onsubmit="github(event)">
+            <label for="username"></label>
+            <input type="text" id= "username" placeholder="Enter username">
+            <button type="submit">Search</button>
+        </form>
+
+        <script>
+            function github(e){
+                e.preventDefault();
+                const username = document.getElementById("username").value;
+                // console.log(username);
+                axios.get("https://api.github.com/users/"+username).then((response) =>{
+                    // console.log(response);
+                    document.getElementsByTagName("img")[0].setAttribute("src", response.data.avatar_url);
+                    document.getElementById("user").innerHTML = response.data.name;
+                })
+                
+            }
+        </script>
+
+        <img id="image" src="" alt="profilePhoto" width="200px" height="200px">
+        <br>
+        <textarea id="user" cols="20" rows="1"></textarea>
+        
+        <!-- <script src="" async defer></script> -->
+    </body>
+</html>
