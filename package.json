@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/vasudev19126/github_profile_searcher#readme",
   "dependencies": {
+    "bootstrap": "^3.4.1",
     "express": "^4.17.1"
   }
 }
